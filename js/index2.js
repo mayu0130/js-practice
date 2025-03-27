@@ -168,4 +168,73 @@ if文とfor文
       console.log(lastName);
    }
   };
+
+  // 配列をfor文でループして特定の範囲の条件だけ出力する
+  const numbers2 = [5, 12, 3, 8, 20, 9];
+  for (let number of numbers2){
+    if(number >= 10 && number <= 15){
+      console.log(number);
+    }
+  };
+  // 12
+
+  // オブジェクトの配列をfor文でループして特定の条件下の時だけ出力する
+  const pepole = [
+    {name: "太郎", age: 25, city: "東京"},
+    {name: "花子", age: 30, city: "大阪"},
+    {name: "次郎", age: 20, city: "名古屋"},
+  ];
+  for (let person of pepole){
+    if(person.age >= 25){
+      console.log(person.name + "さんは成人です");
+    }else{
+      console.log(person.name + "さんは未成年です");
+    }
+  };
+  // 太郎さんは成人です
+  // 花子さんは成人です
+  // 次郎さんは未成年です
+
+  // 2次元配列とネストした二重のループの列
+  const zoo = [
+  [
+    {species: "ライオン", habitat: "サバンナ", sound: "ガオー"},
+    {species: "ゾウ", habitat: "ジャングル", sound: "パオーン"},
+  ],
+  [
+    {species: "キリン", habitat: "草原", sound: "モーモー"},
+    {species: "サル", habitat: "森林", sound: "ウキキ"},
+  ]
+];
+  for (let i = 0; i < zoo.length; i++){
+    console.log("エリア" + (i + 1) + "の動物");
+    console.log("===========================")
+
+    for (let j = 0; j < zoo[i].length; j++){
+      console.log("種類：" + zoo[i][j].species);
+      console.log("生息地：" + zoo[i][j].habitat);
+      console.log("鳴き声：" + zoo[i][j].sound);
+      console.log("---------------------------")
+    }
+  }
+  // エリア1の動物
+  // ===========================
+  // 種類：ライオン
+  // 生息地：サバンナ
+  // 鳴き声：ガオー
+  // ---------------------------
+  // 種類：ゾウ
+  // 生息地：ジャングル
+  // 鳴き声：パオーン
+  // ---------------------------
+  // エリア2の動物
+  // ===========================
+  // 種類：キリン
+  // 生息地：草原
+  // 鳴き声：モーモー
+  // ---------------------------
+  // 種類：サル
+  // 生息地：森林
+  // 鳴き声：ウキキ
+  // ---------------------------
   })();
