@@ -1,0 +1,133 @@
+<!--
+
+DOM操作
+
+DOMは　Document Object　Modelの略称であり、
+HTMLやCSSをJavaScriptからアクセスできるようにするためのもの
+
+HTMLの各要素をオブジェクトのデータとして表現し操作することができる
+-->
+
+<div id="test-id">
+  <p class="text-class hello">Hello World!</p>
+  <p class="text-class paragraph">This is a paragraph.</p>
+</div>
+
+<div id="my-Div">
+  <!-- ここに要素を追加する　-->
+</div>
+
+<div id="my-Div2">
+  <!-- ここに要素を追加する　-->
+</div>
+
+<div id="test-id2">
+  <p class="text-class hello2">Hello World</p>
+  <p class="text-class paragraph2">This is a paragraph.</p>
+</div>
+
+<div id="test-id3">
+  <p class="text-class3 hello3">Hello World</p>
+  <p class="text-class3 paragraph3">This is a paragraph.</p>
+</div>
+
+<script>
+  //DOMが読み込まれるまで待ってから処理をする時の決まり文句
+  document.addEventListener("DOMContentLoaded", () => {
+
+    //IDに基づいて要素を取得する例
+    const testId = document.getElementById("test-id");
+    console.log(testId);
+    //<div id="test-id">
+    //<p class="text-class hello">Hello World!</p>
+    //<p class="text-class paragraph">This is a paragraph.</p>
+    //<div>
+    console.log(testId.children);
+   //<p class="text-class hello">Hello World!</p>
+   //<p class="text-class paragraph">This is a paragraph.</p>
+    console.log(testId.children[0]);
+    //<p class="text-class hello">Hello World!</p>
+    console.log(testId.children[1]);
+    //<p class="text-class paragraph">This is a paragraph.</p>
+
+    //クラス名に基づいて要素を取得する例
+    const testClassList = document.getElementsByClassName("text-class");
+    console.log(testClassList);
+    //<p class="text-class hello">Hello World!</p>
+    //<p class="text-class paragraph">This is a paragraph.</p>
+
+    //タグ名に基づいて要素を取得する例
+    const allParagraphs = document.getElementsByTagName("p");
+    console.log(allParagraphs);
+    //<p class="text-class hello">Hello World!</p>
+    //<p class="text-class paragraph">This is a paragraph.</p>
+
+    //CSSセレクタに基づいた要素を取得する例
+    //querySelectorは見つかった最初の要素を取得する
+    const firstParagraphs = document.querySelector("#test-id > .text-class");
+    console.log(firstParagraphs);
+    //<p class="text-class hello">Hello World!</p>
+    const secondParagraphs = document.querySelector(".text-class.paragraph");
+    console.log(secondParagraphs);
+    //<p class="text-class paragraph">This is a paragraph.</p>
+
+    //CSSセレクタに基づいて一致するすべての要素を取得する例
+    const allParagraphsList = document.querySelector(".text-class");
+    console.log(allParagraphsList);
+    //<p class="text-class hello">Hello World!</p>
+    //<p class="text-class paragraph">This is a paragraph.</p>
+
+
+
+
+    //新しい要素を作成して追加する例(例1-appendChild)
+    const newParagraph = document.createElement("p");
+    newParagraph.textContent = "これは新しい段落です。";
+
+    //my-div直下にnewParagraphで新しく作成した段落を追加する。
+    const myDiv = document.getElementById("my-Div");
+    myDiv.appendChild(newParagraph);
+    //<div id="my-Div">
+      //<!-- ここに要素を追加する　-->
+      //<p>これは新しい段落です。</p>
+    //</div>
+
+    //属性を変更する例
+    newParagraph.setAttribute("class", "highlight");
+    //<p class="highlight">これは新しい段落です。</p>
+
+    //スタイルを変更する例
+    newParagraph.style.color = "red";
+    //<p class="highlight">これは新しい段落です。</p>が赤文字で表示される
+
+
+
+    //新しい要素を作成して追加する例(例2-innerHTML)
+    const myDiv2 = document.getElementById("my-Div2");
+    myDiv2.innerHTML = '<p class="highlight" style="color: red;">これはinnerHTMLで挿入された新しい段落です</p>'
+    //<p class="highlight" style="color: red;">これはinnerHTMLで挿入された新しい段落です</p>が赤文字で表示される
+
+
+
+    //DOM要素の削除(例1-hello2クラスのみを削除)
+    const divElem2 = document.getElementById("test-id2");
+    console.log(divElem2);
+    const paragraph2 = document.querySelector(".text-class.hello2")
+    divElem2.removeChild(paragraph2);
+    //<div id="test-id2">
+      //<p class="text-class paragraph2">This is a paragraph.</p>
+    //</div>
+
+    //DOM要素の削除(例2-hello3クラスとparagraph3を削除)
+    const divElem3 = document.getElementById("test-id3");
+    console.log(divElem3);
+    const paragraph3 = document.querySelectorAll(".text-class3");
+
+    //All(配列)で取得した場合はforeachで分裂させてから削除する
+    paragraph3.forEach(p => {
+      divElem3.removeChild(p);
+
+    });
+
+  });
+</script>
