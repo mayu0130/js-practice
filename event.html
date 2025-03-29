@@ -1,0 +1,80 @@
+<!--
+
+イベントハンドラ
+
+イベントとは、ウェブページ上でのユーザーのアクション（クリック、マウスの移動、キーの入力など）のこと。
+
+イベントハンドラは、特定のイベントが発生した時に実行される関数
+
+イベントハンドラを使用することで、ユーザーのアクションに応じて特定の動作を実行することができます
+
+1.click:マウスでクリックをした時に発生します。
+2.mouseover/mouseout:マウスが要素に乗ったり離れたりした時に発生します。
+3.keydown/keyup:キーボードのキーが押されたりしたときに発生します。
+4.submit:フォームが送信された時に発生します。
+5.change:input要素が入力値に変更された時に発生します。(フォーカスが外れた時)
+6.input:input要素のの入力値が変更された時に発生します。(入力中に随時発生)
+7.load:ページや画像などのリソースが読み込まれた時に発生します。
+-->
+
+<button id="myButton">クリックしてください</button>
+<div id="test"></div>
+
+<div id="my-div">マウスを乗せてください</div>
+ <input type="text" id="keydown-input" placeholder="キーを押してください">
+
+ <div>
+  <input type="text" id="name-input" placeholder="名前を入力してください">
+  <div>名前<span id="name"></span></div>
+ </div>
+
+<script>
+  //HTML要素を選択します
+  const button = document.getElementById("myButton");
+
+  //イベントリスナを追加します
+  button.addEventListener('click', () => {
+    //イベントが発生した時に実行される関数を定義します
+    alert("ボタンがクリックされました")
+    const test = document.getElementById("test");
+    test.textContent = "クリックされました";
+  });
+
+
+
+
+  //マウスが要素に乗った時のイベント
+  const div = document.getElementById("my-div");
+  div.addEventListener("mouseover", () => {
+    div.textContent = "マウスが乗っています";
+  });
+
+  //マウスが要素から離れたときのイベント
+  div.addEventListener("mouseout", () => {
+    div.textContent = "マウスを乗せてください"
+  });
+
+
+
+
+  //キーボードが押された時のイベント
+  const keydownInput = document.getElementById("keydown-input");
+  keydownInput.addEventListener("keydown", (event) => {
+    console.log("キーが押されました:", event.key);
+  });
+
+  //キーボードが離された時のイベント
+  keydownInput.addEventListener("keyup", (event) => {
+    console.log("キーが離されました:", event.key);
+  });
+
+
+
+
+  //入力値が変更された時のイベント
+  const nameInput = document.getElementById("name-input");
+  nameInput.addEventListener("change", (event) => {
+    const nameSpan = document.getElementById("name");
+    nameSpan.textContent = nameInput.value
+  });
+</script>
