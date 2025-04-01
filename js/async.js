@@ -8,9 +8,9 @@
 
 //同期処理の例
 const syncFunction = () => {
-  console.log("1番目");
-  console.log("2番目");
-  console.log("3番目");
+	console.log("1番目");
+	console.log("2番目");
+	console.log("3番目");
 };
 syncFunction();
 
@@ -24,7 +24,7 @@ syncFunction();
 
 //非同期処理の例
 setTimeout(() => {
-  console.log("１番目");
+	console.log("１番目");
 }, 2000);
 
 console.log("2番目");
@@ -40,9 +40,9 @@ fetch
 
 //fetchを使ってデータを取得する例
 fetch("https://jsonplaceholder.typicode.com/users")
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Fetch error:", error));
+	.then((response) => response.json())
+	.then((data) => console.log(data))
+	.catch((error) => console.error("Fetch error:", error));
 
 /*
 
@@ -56,21 +56,21 @@ Promise
 
 //Promiseを使った非同期処理の例
 const promiseTestFunc = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const success = true;
-      if (success) {
-        resolve("非同期処理に成功しました。");
-      } else {
-        reject(new Error("非同期処理に失敗しました。"));
-      }
-    }, 2000);
-  });
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			const success = true;
+			if (success) {
+				resolve("非同期処理に成功しました。");
+			} else {
+				reject(new Error("非同期処理に失敗しました。"));
+			}
+		}, 2000);
+	});
 };
 
 promiseTestFunc()
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Error:", error));
+	.then((data) => console.log(data))
+	.catch((error) => console.error("Error:", error));
 
 /*
 
@@ -91,45 +91,45 @@ async
 //async/awaitを使った非同期処理の例
 
 async function fetchDataAsync() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  if (!response.ok) {
-    console.error("Fetch error:", error);
-  }
-  const data = await response.json();
-  console.log(data);
+	const response = await fetch("https://jsonplaceholder.typicode.com/users");
+	if (!response.ok) {
+		console.error("Fetch error:", error);
+	}
+	const data = await response.json();
+	console.log(data);
 
-  //上記で受け取ったjsonをDOMでHTML形式表示をする
-  data.forEach((user) => {
-    //各データのtdを作成する
-    const idTdElem = document.createElement("td");
-    idTdElem.textContent = user.id;
+	//上記で受け取ったjsonをDOMでHTML形式表示をする
+	data.forEach((user) => {
+		//各データのtdを作成する
+		const idTdElem = document.createElement("td");
+		idTdElem.textContent = user.id;
 
-    const nameTdElem = document.createElement("td");
-    nameTdElem.textContent = user.name;
+		const nameTdElem = document.createElement("td");
+		nameTdElem.textContent = user.name;
 
-    const usernameTdElem = document.createElement("td");
-    usernameTdElem.textContent = user.username;
+		const usernameTdElem = document.createElement("td");
+		usernameTdElem.textContent = user.username;
 
-    const phoneTdElem = document.createElement("td");
-    phoneTdElem.textContent = user.phone;
+		const phoneTdElem = document.createElement("td");
+		phoneTdElem.textContent = user.phone;
 
-    const emailTdElem = document.createElement("td");
-    emailTdElem.textContent = user.email;
+		const emailTdElem = document.createElement("td");
+		emailTdElem.textContent = user.email;
 
-    const websiteTdElem = document.createElement("td");
-    websiteTdElem.textContent = user.website;
+		const websiteTdElem = document.createElement("td");
+		websiteTdElem.textContent = user.website;
 
-    //trを作成する
-    const trElem = document.createElement("tr");
-    trElem.appendChild(idTdElem);
-    trElem.appendChild(nameTdElem);
-    trElem.appendChild(usernameTdElem);
-    trElem.appendChild(phoneTdElem);
-    trElem.appendChild(emailTdElem);
-    trElem.appendChild(websiteTdElem);
+		//trを作成する
+		const trElem = document.createElement("tr");
+		trElem.appendChild(idTdElem);
+		trElem.appendChild(nameTdElem);
+		trElem.appendChild(usernameTdElem);
+		trElem.appendChild(phoneTdElem);
+		trElem.appendChild(emailTdElem);
+		trElem.appendChild(websiteTdElem);
 
-    const userListElem = document.getElementById("user-list");
-    userListElem.appendChild(trElem);
-  });
+		const userListElem = document.getElementById("user-list");
+		userListElem.appendChild(trElem);
+	});
 }
 fetchDataAsync();
