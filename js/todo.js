@@ -10,8 +10,9 @@ const registerNewTodo = () => {
   const newPerson = document.getElementById("new-person");
   const newDeadline = document.getElementById("new-deadline");
 
-  //新しいTODOをオブジェクト { todoName, person, deadline } として作成し、todoList 配列に追加。
+//新しいTODOをオブジェクト { todoName, person, deadline } として作成し、todoList 配列に追加。
   todoList.push({
+    id: Date.now(),
     todoName: newTodoName.value,
     person: newPerson.value,
     deadline: newDeadline.value,
@@ -25,6 +26,11 @@ const removeTodoListElem = () => {
   while(tbodyElem.firstChild){
     tbodyElem.firstChild.remove();
   };
+};
+
+//引数にIDを受け取り、todoListの中から該当するtodoを削除する
+const removeTodoById = (id) => {
+  todoList = todoList.filter((todo) => todo.id !== id);
 };
 
 //TODO一覧を表示する関数
@@ -46,11 +52,26 @@ const appendTodoListElem = () => {
     const deadlineTdElem = document.createElement("td");
     deadlineTdElem.textContent = todo.deadline;
 
+    //削除button要素を生成
+    const removeButtonElem = document.createElement("button");
+    removeButtonElem.textContent = "削除";
+    //削除ボタンがクリックされたときに該当のTODOを削除する
+    removeButtonElem.addEventListener("click", () => {
+
+      removeTodoById(todo.id);
+      appendTodoListElem();
+    });
+
+    //削除ボタンを表示するためのtd要素を生成
+    const buttonTdElem = document.createElement("td");
+    buttonTdElem.appendChild(removeButtonElem);
+
     //tr要素を作成し、td要素を挿入
     const trElem = document.createElement("tr");
     trElem.appendChild(todoNameTdElem);
     trElem.appendChild(personTdElem);
     trElem.appendChild(deadlineTdElem);
+    trElem.appendChild(buttonTdElem);
 
 
     //tbody要素の中に、tr要素を挿入する
