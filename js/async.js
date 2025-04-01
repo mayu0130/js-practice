@@ -14,9 +14,6 @@ const syncFunction = () => {
 };
 syncFunction();
 
-
-
-
 /*
 
 非同期処理
@@ -32,9 +29,6 @@ setTimeout(() => {
 
 console.log("2番目");
 
-
-
-
 /*
 
 fetch
@@ -46,12 +40,9 @@ fetch
 
 //fetchを使ってデータを取得する例
 fetch("https://jsonplaceholder.typicode.com/users")
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Fetch error:", error));
-
-
-
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Fetch error:", error));
 
 /*
 
@@ -65,24 +56,21 @@ Promise
 
 //Promiseを使った非同期処理の例
 const promiseTestFunc = () => {
-  return new Promise((resolve, reject) =>{
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       const success = true;
       if (success) {
         resolve("非同期処理に成功しました。");
-      }else{
+      } else {
         reject(new Error("非同期処理に失敗しました。"));
       }
     }, 2000);
   });
-}
+};
 
 promiseTestFunc()
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:",error));
-
-
-
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Error:", error));
 
 /*
 
@@ -104,7 +92,7 @@ async
 
 async function fetchDataAsync() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  if(!response.ok){
+  if (!response.ok) {
     console.error("Fetch error:", error);
   }
   const data = await response.json();
@@ -112,7 +100,7 @@ async function fetchDataAsync() {
 
   //上記で受け取ったjsonをDOMでHTML形式表示をする
   data.forEach((user) => {
-     //各データのtdを作成する
+    //各データのtdを作成する
     const idTdElem = document.createElement("td");
     idTdElem.textContent = user.id;
 
@@ -143,8 +131,5 @@ async function fetchDataAsync() {
     const userListElem = document.getElementById("user-list");
     userListElem.appendChild(trElem);
   });
-
-
-
 }
 fetchDataAsync();

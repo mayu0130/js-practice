@@ -21,27 +21,24 @@
 <div id="test"></div>
 
 <div id="my-div">マウスを乗せてください</div>
- <input type="text" id="keydown-input" placeholder="キーを押してください">
+<input type="text" id="keydown-input" placeholder="キーを押してください" />
 
- <div>
-  <input type="text" id="name-input" placeholder="名前を入力してください">
+<div>
+  <input type="text" id="name-input" placeholder="名前を入力してください" />
   <div>名前<span id="name"></span></div>
- </div>
+</div>
 
 <script>
   //HTML要素を選択します
   const button = document.getElementById("myButton");
 
   //イベントリスナを追加します
-  button.addEventListener('click', () => {
+  button.addEventListener("click", () => {
     //イベントが発生した時に実行される関数を定義します
-    alert("ボタンがクリックされました")
+    alert("ボタンがクリックされました");
     const test = document.getElementById("test");
     test.textContent = "クリックされました";
   });
-
-
-
 
   //マウスが要素に乗った時のイベント
   const div = document.getElementById("my-div");
@@ -51,11 +48,8 @@
 
   //マウスが要素から離れたときのイベント
   div.addEventListener("mouseout", () => {
-    div.textContent = "マウスを乗せてください"
+    div.textContent = "マウスを乗せてください";
   });
-
-
-
 
   //キーボードが押された時のイベント
   const keydownInput = document.getElementById("keydown-input");
@@ -68,13 +62,10 @@
     console.log("キーが離されました:", event.key);
   });
 
-
-
-
   //入力値が変更された時のイベント
   const nameInput = document.getElementById("name-input");
   nameInput.addEventListener("change", (event) => {
     const nameSpan = document.getElementById("name");
-    nameSpan.textContent = nameInput.value
+    nameSpan.textContent = nameInput.value;
   });
 </script>

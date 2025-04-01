@@ -1,4 +1,4 @@
-.new-todo{
+.new-todo {
   display: flex;
 }
 
@@ -6,39 +6,40 @@
   margin-left: 20px;
 }
 
-.todo-list{
+.todo-list {
   border-collapse: collapse;
 }
 
-.todo-list > thead{
+.todo-list > thead {
   background-color: rgb(192, 190, 190);
 }
 .todo-list > thead > tr > th,
-.todo-list > tbody > tr > td{
+.todo-list > tbody > tr > td {
   width: 150px;
   border: 1px solid;
   padding: 10px;
-
 }
 
-.filter{
+.filter {
   margin: 10px 0;
 }
 
-.user-list{
+.user-list {
   margin-top: 10px;
   border-collapse: collapse;
 }
 
-.user-list, th, td{
+.user-list,
+th,
+td {
   border: 1px solid;
-
 }
 
-th, td{
+th,
+td {
   padding: 10px;
 }
 
-th{
+th {
   background-color: rgb(192, 190, 190);
 }

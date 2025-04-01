@@ -4,7 +4,7 @@ if文とfor文
 
 */
 
-(function() {
+(function () {
   // 比較演算子
   let num1 = 10;
   let num2 = 5;
@@ -33,21 +33,16 @@ if文とfor文
   let isLessOrEqual = num1 <= num2;
   console.log(isLessOrEqual); // false
 
-
-
-
-
-
   // 曖昧な等価比較 (例1)
   let num3 = 10;
   let num4 = "10";
 
-   console.log(num3 == num4); // true
-   //値が等しい為、trueが返る
-   console.log(num3 === num4); // false
-   //値は等しいが、型が違う為、falseが返る
+  console.log(num3 == num4); // true
+  //値が等しい為、trueが返る
+  console.log(num3 === num4); // false
+  //値は等しいが、型が違う為、falseが返る
 
-   // 曖昧な等価比較 (例2)
+  // 曖昧な等価比較 (例2)
   let num5 = 10;
   let num6 = 10;
 
@@ -55,9 +50,6 @@ if文とfor文
   //値が等しい為、trueが返る
   console.log(num3 === num4); // true
   //値も型も等しい為、trueが返る
-
-
-
 
   // if文 (例1)
   let age = 20;
@@ -70,15 +62,12 @@ if文とfor文
   let age2 = 20;
   if (age2 < 18) {
     console.log("未成年です");
-    }else if (age2 >= 18 && age2 < 65) {
-      console.log("成人です");
-    } else {
-      console.log("高齢者です");
-    }
+  } else if (age2 >= 18 && age2 < 65) {
+    console.log("成人です");
+  } else {
+    console.log("高齢者です");
+  }
   // 成人です
-
-
-
 
   // switch文
   let day = "月曜日";
@@ -95,10 +84,6 @@ if文とfor文
   }
   // 月曜日です
 
-
-
-
-
   // for文 (例1)
   for (let i = 0; i <= 5; i++) {
     console.log("現在の値：" + i);
@@ -114,7 +99,7 @@ if文とfor文
   const fruits = ["りんご", "バナナ", "オレンジ"];
   for (let fruit of fruits) {
     console.log("フルーツ:" + fruit);
-  };
+  }
   // フルーツ:りんご
   // フルーツ:バナナ
   // フルーツ:オレンジ
@@ -123,7 +108,7 @@ if文とfor文
   const person = {
     name: "太郎",
     age: 25,
-    city: "東京"
+    city: "東京",
   };
   for (let key in person) {
     console.log(key + ":" + person[key]);
@@ -132,89 +117,91 @@ if文とfor文
   // age:25
   // city:東京
 
-
-
-
-
   // 1から9までの数字の中で偶数だけを表示する
   for (let i = 1; i < 10; i++) {
-    if (i % 2 === 0)
-    console.log(i + "は偶数です");
-   };
-   // 配列のlength(要素数)を使ったfor文の例
-   const numbers = [10, 20, 30, 40, 50];
-   console.log("配列の要素数：" + numbers.length);
+    if (i % 2 === 0) console.log(i + "は偶数です");
+  }
+  // 配列のlength(要素数)を使ったfor文の例
+  const numbers = [10, 20, 30, 40, 50];
+  console.log("配列の要素数：" + numbers.length);
 
-   for (let i = 0; i < numbers.length; i++) {
-     if(numbers[i] > 30){
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > 30) {
       console.log("要素番号" + i + ":" + numbers[i] + "(30より大きい)");
-     }else{
+    } else {
       console.log("要素番号" + i + ":" + numbers[i] + "(30以下)");
-     }
-   };
+    }
+  }
 
-   // 特定の文字列を含む場合に (例1)
-   const fruits2 = ["りんご", "バナナ", "オレンジ", "パイナップル", "りんごジュース", "バナナジュース"];
-   for (let fruit of fruits2){
-    if(fruit.includes("りんご")){
+  // 特定の文字列を含む場合に (例1)
+  const fruits2 = [
+    "りんご",
+    "バナナ",
+    "オレンジ",
+    "パイナップル",
+    "りんごジュース",
+    "バナナジュース",
+  ];
+  for (let fruit of fruits2) {
+    if (fruit.includes("りんご")) {
       console.log(fruit);
-   }
-  };
+    }
+  }
 
-   // 特定の文字列を含む場合に (例2)
-   const lastNames = ["田中", "山田", "鈴木", "佐藤", "岩田", "田村"];
-   for (let lastName of lastNames){
-    if(lastName.includes("田")){
+  // 特定の文字列を含む場合に (例2)
+  const lastNames = ["田中", "山田", "鈴木", "佐藤", "岩田", "田村"];
+  for (let lastName of lastNames) {
+    if (lastName.includes("田")) {
       console.log(lastName);
-   }
-  };
+    }
+  }
 
   // 配列をfor文でループして特定の範囲の条件だけ出力する
   const numbers2 = [5, 12, 3, 8, 20, 9];
-  for (let number of numbers2){
-    if(number >= 10 && number <= 15){
+  for (let number of numbers2) {
+    if (number >= 10 && number <= 15) {
       console.log(number);
     }
-  };
+  }
   // 12
 
   // オブジェクトの配列をfor文でループして特定の条件下の時だけ出力する
   const pepole = [
-    {name: "太郎", age: 25, city: "東京"},
-    {name: "花子", age: 30, city: "大阪"},
-    {name: "次郎", age: 20, city: "名古屋"},
+    { name: "太郎", age: 25, city: "東京" },
+    { name: "花子", age: 30, city: "大阪" },
+    { name: "次郎", age: 20, city: "名古屋" },
   ];
-  for (let person of pepole){
-    if(person.age >= 25){
+  for (let person of pepole) {
+    if (person.age >= 25) {
       console.log(person.name + "さんは成人です");
-    }else{
+    } else {
       console.log(person.name + "さんは未成年です");
     }
-  };
+  }
   // 太郎さんは成人です
   // 花子さんは成人です
   // 次郎さんは未成年です
 
   // 2次元配列とネストした二重のループの列
   const zoo = [
-  [
-    {species: "ライオン", habitat: "サバンナ", sound: "ガオー"},
-    {species: "ゾウ", habitat: "ジャングル", sound: "パオーン"},
-  ],
-  [
-    {species: "キリン", habitat: "草原", sound: "モーモー"},
-    {species: "サル", habitat: "森林", sound: "ウキキ"},
-  ]
-];
-  for (let i = 0; i < zoo.length; i++){
+    [
+      { species: "ライオン", habitat: "サバンナ", sound: "ガオー" },
+      { species: "ゾウ", habitat: "ジャングル", sound: "パオーン" },
+    ],
+    [
+      { species: "キリン", habitat: "草原", sound: "モーモー" },
+      { species: "サル", habitat: "森林", sound: "ウキキ" },
+    ],
+  ];
+  for (let i = 0; i < zoo.length; i++) {
     console.log("エリア" + (i + 1) + "の動物");
-    console.log("===========================")
+    console.log("===========================");
 
-    for (let j = 0; j < zoo[i].length; j++){
+    for (let j = 0; j < zoo[i].length; j++) {
       console.log("種類：" + zoo[i][j].species);
       console.log("生息地：" + zoo[i][j].habitat);
       console.log("鳴き声：" + zoo[i][j].sound);
-      console.log("---------------------------")
+      console.log("---------------------------");
     }
   }
   // エリア1の動物
@@ -237,4 +224,4 @@ if文とfor文
   // 生息地：森林
   // 鳴き声：ウキキ
   // ---------------------------
-  })();
+})();

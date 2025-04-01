@@ -3,7 +3,7 @@ TODOアプリの仕様
 ・TODO名、担当者名、期限を作成できる
 ・作成したTODOを一覧表示する-->
 <head>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <main>
   <h1>TODOアプリ</h1>
@@ -12,15 +12,19 @@ TODOアプリの仕様
     <div class="new-todo">
       <div>
         <label for="new-todo-name">TODO名</label>
-        <input id="new-todo-name" type="text" placeholder="TODO名を入力">
+        <input id="new-todo-name" type="text" placeholder="TODO名を入力" />
       </div>
       <div>
         <label for="new-person">担当者</label>
-        <input id="new-person" type="text" placeholder="担当者を入力">
+        <input id="new-person" type="text" placeholder="担当者を入力" />
       </div>
       <div>
         <label for="new-deadline">期限</label>
-        <input id="new-deadline" type="date" placeholder="期限を入力してください">
+        <input
+          id="new-deadline"
+          type="date"
+          placeholder="期限を入力してください"
+        />
       </div>
       <div>
         <button id="register" type="button">登録</button>
@@ -32,7 +36,7 @@ TODOアプリの仕様
     <h2>TODO一覧</h2>
     <div class="filter">
       <label for="絞り込み"></label>
-      <input id="filter" type="text" placeholder="絞り込み">
+      <input id="filter" type="text" placeholder="絞り込み" />
     </div>
     <table class="todo-list">
       <thead>
@@ -43,11 +47,8 @@ TODOアプリの仕様
           <th>操作</th>
         </tr>
       </thead>
-      <tbody id="todo-list">
-      </tbody>
-
+      <tbody id="todo-list"></tbody>
     </table>
-
   </section>
 </main>
 <script src="js/todo.js"></script>
