@@ -1,6 +1,8 @@
 //todoListという配列を定義し、TODOを保存するためのリストとして使用
 let todoList = [];
 
+let filterWord = "";
+
 //入力された新しいTODOの値を取得し、todoList変数に代入する関数
 const registerNewTodo = () => {
   //入力されたTODOの値を取得
@@ -27,7 +29,13 @@ const removeTodoListElem = () => {
 
 //TODO一覧を表示する関数
 const appendTodoListElem = () => {
-  todoList.forEach((todo) => {
+  removeTodoListElem();
+  todoList
+  .filter(
+    (todo) =>
+      todo.todoName.includes(filterWord) || todo.person.includes(filterWord)
+  )
+  .forEach((todo) => {
     //todoNameのtd要素を生成
     const todoNameTdElem = document.createElement("td");
     todoNameTdElem.textContent = todo.todoName;
@@ -60,8 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   registerButtonElem.addEventListener("click", () => {
 
     registerNewTodo();
-    removeTodoListElem();
     appendTodoListElem();
+  });
 
+  //絞り込みに入力された場合のイベント定義
+  const filterInputElem = document.getElementById("filter");
+  filterInputElem.addEventListener("input", () => {
+    filterWord = filterInputElem.value;
+
+  appendTodoListElem();
   });
 });
