@@ -17,8 +17,11 @@ const registerNewTodo = () => {
     person: newPerson.value,
     deadline: newDeadline.value,
   });
+  //入力欄をクリアにする
+  newTodoName.value = "";
+  newPerson.value = "";
+  newDeadline.value = "";
 };
-
 //TODO一覧を全て削除する関数
 const removeTodoListElem = () => {
   const tbodyElem = document.getElementById("todo-list");
