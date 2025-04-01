@@ -1,0 +1,27 @@
+{
+  "name": "js-practice",
+  "version": "1.0.0",
+  "description": "JS-Practice",
+  "type": "module",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint js",
+    "lint:fix": "eslint js --fix"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayu0130/js-practice.git"
+  },
+  "author": "mayu0130",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayu0130/js-practice/issues"
+  },
+  "homepage": "https://github.com/mayu0130/js-practice#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0"
+  }
+}
