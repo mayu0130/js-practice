@@ -109,5 +109,42 @@ async function fetchDataAsync() {
   }
   const data = await response.json();
   console.log(data);
+
+  //上記で受け取ったjsonをDOMでHTML形式表示をする
+  data.forEach((user) => {
+     //各データのtdを作成する
+    const idTdElem = document.createElement("td");
+    idTdElem.textContent = user.id;
+
+    const nameTdElem = document.createElement("td");
+    nameTdElem.textContent = user.name;
+
+    const usernameTdElem = document.createElement("td");
+    usernameTdElem.textContent = user.username;
+
+    const phoneTdElem = document.createElement("td");
+    phoneTdElem.textContent = user.phone;
+
+    const emailTdElem = document.createElement("td");
+    emailTdElem.textContent = user.email;
+
+    const websiteTdElem = document.createElement("td");
+    websiteTdElem.textContent = user.website;
+
+    //trを作成する
+    const trElem = document.createElement("tr");
+    trElem.appendChild(idTdElem);
+    trElem.appendChild(nameTdElem);
+    trElem.appendChild(usernameTdElem);
+    trElem.appendChild(phoneTdElem);
+    trElem.appendChild(emailTdElem);
+    trElem.appendChild(websiteTdElem);
+
+    const userListElem = document.getElementById("user-list");
+    userListElem.appendChild(trElem);
+  });
+
+
+
 }
 fetchDataAsync();

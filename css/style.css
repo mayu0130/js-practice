@@ -24,3 +24,21 @@
 .filter{
   margin: 10px 0;
 }
+
+.user-list{
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.user-list, th, td{
+  border: 1px solid;
+
+}
+
+th, td{
+  padding: 10px;
+}
+
+th{
+  background-color: rgb(192, 190, 190);
+}
