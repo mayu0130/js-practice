@@ -1,4 +1,5 @@
 import { data, registerNewTodo, appendTodoListElem } from "./_todo"
+import "../css/style.css";
 
 //ページが完全に読み込まれたら、以下の処理を実行します。
 document.addEventListener("DOMContentLoaded", () => {
