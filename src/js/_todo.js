@@ -1,17 +1,20 @@
 //todoListという配列を定義し、TODOを保存するためのリストとして使用
-let todoList = [];
 
-let filterWord = "";
+export const data = {
+  todoList: [],
+  filterWord: ""
+};
+
 
 //入力された新しいTODOの値を取得し、todoList変数に代入する関数
-const registerNewTodo = () => {
+export const registerNewTodo = () => {
 	//入力されたTODOの値を取得
 	const newTodoName = document.getElementById("new-todo-name");
 	const newPerson = document.getElementById("new-person");
 	const newDeadline = document.getElementById("new-deadline");
 
 	//新しいTODOをオブジェクト { todoName, person, deadline } として作成し、todoList 配列に追加。
-	todoList.push({
+	data.todoList.push({
 		id: Date.now(),
 		todoName: newTodoName.value,
 		person: newPerson.value,
@@ -33,16 +36,16 @@ const removeTodoListElem = () => {
 
 //引数にIDを受け取り、todoListの中から該当するtodoを削除する
 const removeTodoById = (id) => {
-	todoList = todoList.filter((todo) => todo.id !== id);
+	data.todoList = data.todoList.filter((todo) => todo.id !== id);
 };
 
 //TODO一覧を表示する関数
-const appendTodoListElem = () => {
+export const appendTodoListElem = () => {
 	removeTodoListElem();
-	todoList
+	data.todoList
 		.filter(
 			(todo) =>
-				todo.todoName.includes(filterWord) || todo.person.includes(filterWord),
+				todo.todoName.includes(data.filterWord) || todo.person.includes(data.filterWord),
 		)
 		.forEach((todo) => {
 			//todoNameのtd要素を生成
@@ -80,22 +83,3 @@ const appendTodoListElem = () => {
 			tbodyElem.appendChild(trElem);
 		});
 };
-
-//ページが完全に読み込まれたら、以下の処理を実行します。
-document.addEventListener("DOMContentLoaded", () => {
-	//id="register" のボタン（登録ボタン）を取得し、クリックされたときに処理を実行します。
-	const registerButtonElem = document.getElementById("register");
-
-	registerButtonElem.addEventListener("click", () => {
-		registerNewTodo();
-		appendTodoListElem();
-	});
-
-	//絞り込みに入力された場合のイベント定義
-	const filterInputElem = document.getElementById("filter");
-	filterInputElem.addEventListener("input", () => {
-		filterWord = filterInputElem.value;
-
-		appendTodoListElem();
-	});
-});
